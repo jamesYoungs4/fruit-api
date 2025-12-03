@@ -49,13 +49,14 @@ class Fruit{
         }
     }
 
-    completelyKill(){
-        delete this.genus;
-        delete this.name;
-        delete this.family;
-        delete this.order;
-        delete this.nutritions;
-        delete this.id;
+    destroy(){
+        const deletedFruit = fruits.find(fruit => fruit.name.toLowerCase() == this.name.toLowerCase())
+        if(deletedFruit){
+            const index = fruits.indexOf(deletedFruit)
+            fruits.splice(index, 1)
+        } else {
+            throw new Error("Fruit not found")
+        }
     }
 }
 
